@@ -95,6 +95,13 @@ class MainWindow(QMainWindow):
     # 备份按钮
     def click_backupButton(self):
         filename = QtWidgets.QFileDialog.getSaveFileName(filter="sql(*.sql)")
+        with open(filename[0], 'w') as f:
+            str = ''
+            for idx in range(self.main_ui.mainTable.model().rowCount()):
+                for idx2 in range(self.main_ui.mainTable.model().rowCount()):
+                    str += self.main_ui.mainTable.model().index(idx, idx2).data()
+                str += '\n'
+            f.write(str)
 
 
     # 刷新界面

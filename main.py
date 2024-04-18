@@ -9,6 +9,5 @@ def main():
     _main_window = MainWindow()
     _main_window.sign_in()
     sys.exit(app.exec_())
-
 if __name__ == "__main__":
     main()
