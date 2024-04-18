@@ -61,6 +61,10 @@ class SignInWindow(QMainWindow):
             QMessageBox.warning(self, "警告", "未输入密码！", QMessageBox.Cancel)
             return
 
+        if not (account == "root" and password == "root"):
+            QMessageBox.warning(self, "警告", "密码错误！", QMessageBox.Cancel)
+            return
+
         self._parent_window.finish_sign_in()
         self.destroy()
     
