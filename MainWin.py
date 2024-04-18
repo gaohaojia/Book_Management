@@ -37,6 +37,7 @@ class MainWindow(QMainWindow):
         self.main_ui.endDateEdit.dateChanged.connect(self.fresh_page)
         self.main_ui.deleteButton.clicked.connect(self.click_deleteButton)
         self.main_ui.addButton.clicked.connect(self.click_addButton)
+        self.main_ui.backupButton.clicked.connect(self.click_backupButton)
 
         self.main_ui.mainTable.horizontalHeader().setStretchLastSection(True)
         self.main_ui.mainTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -90,6 +91,11 @@ class MainWindow(QMainWindow):
             if not connector.run_insert(f"DELETE FROM StockIn WHERE StockInID = {data}"):
                 QMessageBox.warning(self, "警告", "删除失败！", QMessageBox.Cancel)
         self.fresh_page()
+
+    # 备份按钮
+    def click_backupButton(self):
+        filename = QtWidgets.QFileDialog.getSaveFileName(filter="sql(*.sql)")
+
 
     # 刷新界面
     def fresh_page(self):
