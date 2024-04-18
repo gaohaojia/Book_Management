@@ -39,4 +39,5 @@ class InsertWindow(QMainWindow):
 
     # 点击插入按钮事件
     def insert_button_clicked(self):
+        QMessageBox.warning("外键约束不符合条件！")
         self.destroy()
